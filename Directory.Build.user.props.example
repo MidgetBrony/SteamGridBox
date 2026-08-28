@@ -1,0 +1,6 @@
+<Project>
+  <PropertyGroup>
+    <GamePath>D:\SteamLibrary\steamapps\common\My Game Room</GamePath>
+    <ModsPanelPath>C:\Users\Rusty\source\repos\ModsPanel\bin\Release\netstandard2.1\ModsPanel.dll</ModsPanelPath>
+  </PropertyGroup>
+</Project>
