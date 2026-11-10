@@ -406,27 +406,30 @@ internal static class InspectMenuPatch
                         : Math.Max(64f, addRect.rect.height + 14f);
                     rect.anchoredPosition = addRect.anchoredPosition - new Vector2(0f, spacing);
                 }
-                TextMeshProUGUI label = buttonObject.GetComponentInChildren<TextMeshProUGUI>(true);
-                if (label != null) label.text = "SteamGrid";
-                Button button = buttonObject.GetComponent<Button>();
-                if (button != null)
+            }
+
+            // BOXROOM 1.0 refreshes cloned button captions after creation. Reapply
+            // our identity and action whenever the inspect menu opens.
+            TextMeshProUGUI label = buttonObject.GetComponentInChildren<TextMeshProUGUI>(true);
+            if (label != null) label.text = "SteamGrid";
+            Button button = buttonObject.GetComponent<Button>();
+            if (button != null)
+            {
+                button.onClick = new Button.ButtonClickedEvent();
+                button.onClick.AddListener(() => SteamGridBoxMod.Instance?.OpenFor(__instance));
+
+                Button addButton = addScreenshots.GetComponent<Button>();
+                if (addButton != null)
                 {
-                    button.onClick = new Button.ButtonClickedEvent();
-                    button.onClick.AddListener(() => SteamGridBoxMod.Instance?.OpenFor(__instance));
+                    Navigation addNavigation = addButton.navigation;
+                    addNavigation.mode = Navigation.Mode.Explicit;
+                    addNavigation.selectOnDown = button;
+                    addButton.navigation = addNavigation;
 
-                    Button addButton = addScreenshots.GetComponent<Button>();
-                    if (addButton != null)
-                    {
-                        Navigation addNavigation = addButton.navigation;
-                        addNavigation.mode = Navigation.Mode.Explicit;
-                        addNavigation.selectOnDown = button;
-                        addButton.navigation = addNavigation;
-
-                        Navigation steamGridNavigation = button.navigation;
-                        steamGridNavigation.mode = Navigation.Mode.Explicit;
-                        steamGridNavigation.selectOnUp = addButton;
-                        button.navigation = steamGridNavigation;
-                    }
+                    Navigation steamGridNavigation = button.navigation;
+                    steamGridNavigation.mode = Navigation.Mode.Explicit;
+                    steamGridNavigation.selectOnUp = addButton;
+                    button.navigation = steamGridNavigation;
                 }
             }
         }
