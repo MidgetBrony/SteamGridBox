@@ -3,7 +3,7 @@
   "id": "steamgridbox",
   "name": "SteamGridBox",
   "author": "MidgetBrony",
-  "description": "SteamGridDB cover browsing, preview, confirmation, and bulk cover downloads for BOXROOM game boxes.",
+  "description": "Shared SteamGridDB artwork browsing, preview, confirmation, and bulk cover downloads for BOXROOM and installed addons.",
   "repository": "https://github.com/MidgetBrony/SteamGridBox",
   "requirements": {
     "melonLoader": "0.7.0"
@@ -11,7 +11,7 @@
   "dependencies": [
     {
       "manifest": "https://raw.githubusercontent.com/MidgetBrony/ModsPanel/refs/heads/master/manifest.json",
-      "minimumVersion": "2.4.2",
+      "minimumVersion": "2.7.5",
       "required": true
     }
   ],
