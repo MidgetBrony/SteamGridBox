@@ -25,14 +25,6 @@ public sealed class SteamGridBoxMod : MelonMod
     private bool requestRunning;
     private bool bulkRunning;
 
-    internal string ApiKey => config?.ApiKey ?? string.Empty;
-
-    internal void SetApiKey(string value)
-    {
-        config.ApiKey = (value ?? string.Empty).Trim();
-        config.Save();
-    }
-
     public override void OnInitializeMelon()
     {
         Instance = this;

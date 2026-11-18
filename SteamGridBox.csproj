@@ -6,7 +6,7 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <AssemblyName>SteamGridBox</AssemblyName>
     <RootNamespace>SteamGridBox</RootNamespace>
-    <Version>1.5.0</Version>
+    <Version>1.4.2</Version>
     <PlatformTarget>x64</PlatformTarget>
     <GamePath Condition="'$(GamePath)' == ''">D:\SteamLibrary\steamapps\common\My Game Room</GamePath>
     <ModsPanelPath Condition="'$(ModsPanelPath)' == ''">C:\Users\Rusty\source\repos\ModsPanel\bin\Release\netstandard2.1\ModsPanel.dll</ModsPanelPath>
