@@ -96,6 +96,7 @@ internal static class SharedArtworkPicker
             "Managed once by SteamGridBox");
         menu.AddButton("Back", request.Back ?? ModsUi.CloseMenu);
         menu.AddLabel("SteamGridBox provides this shared artwork browser and API key to installed BOXROOM addons.");
+        menu.Closed = request.Back;
         menu.Show();
     }
 
@@ -117,6 +118,7 @@ internal static class SharedArtworkPicker
             Open(request);
         }, "Used by SteamGridBox and its shared artwork browser");
         menu.AddButton("Back", () => Open(request));
+        menu.Closed = () => Open(request);
         menu.Show();
     }
 
@@ -178,6 +180,7 @@ internal static class SharedArtworkPicker
         if (matches.Count == 0) menu.AddLabel("No matches were returned. Edit the title and try again.");
         menu.AddButton("Edit search", () => Open(request));
         menu.AddButton("Back", () => Open(request));
+        menu.Closed = () => Open(request);
         menu.Show();
     }
 
@@ -194,6 +197,7 @@ internal static class SharedArtworkPicker
         if (request.IncludeLogos)
             menu.AddButton("Transparent logos", () => StartImages(request, game, SteamGridArtworkKind.Logo), "PNG logos suitable for box spines");
         menu.AddButton("Back", () => Open(request));
+        menu.Closed = () => Open(request);
         menu.Show();
     }
 
@@ -304,6 +308,7 @@ internal static class SharedArtworkPicker
             ShowCategories(request, game);
         });
         menu.AddButton("Back to shapes", () => ShowCategories(request, game));
+        menu.Closed = () => ShowCategories(request, game);
         menu.Show();
     }
 
@@ -367,6 +372,7 @@ internal static class SharedArtworkPicker
             if (operationSerial != loadingOperation) return;
             operationSerial++;
             busy = false;
+            cancelled?.Invoke();
         };
         menu.Show();
     }
